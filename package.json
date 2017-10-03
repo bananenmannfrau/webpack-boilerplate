@@ -8,9 +8,13 @@
     "webpack-dev-server": "^2.9.1"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0"
   },
   "scripts": {
+    "build": "webpack --config='configs/webpack.config.js'",
+    "dev": "webpack-dev-server --config='configs/webpack.config.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
