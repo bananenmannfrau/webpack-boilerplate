@@ -1,0 +1,6 @@
+[package]
+name = "web"
+version = "0.1.0"
+authors = ["bananenmannfrau <bananenmannfrau@posteo.net>"]
+
+[dependencies]
