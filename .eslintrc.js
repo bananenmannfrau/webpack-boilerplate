@@ -1,21 +1,21 @@
 module.exports = {
   env: {
     browser: true,
-    es6: true,
+    es6: true
   },
   extends: 'eslint:recommended',
   parserOptions: {
     ecmaFeatures: {
       experimentalObjectRestSpread: true,
-      jsx: true,
+      jsx: true
     },
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: ['react'],
   rules: {
     indent: ['error', 2],
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
-    semi: ['error', 'always'],
-  },
+    semi: ['error', 'always']
+  }
 };
