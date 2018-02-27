@@ -8,3 +8,8 @@ To use web-assembly with **rust** use this branch
 
 ## react
 For use with new react app
+
+## typescript-react
+typescript and react. also possible to use pure JSX.
+
+TSX files will first go through `ts-loader` and then through `babel`
