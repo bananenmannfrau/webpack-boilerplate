@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
-    "lodash": "^4.17.5"
-  },
+  "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^7.1.4",
     "babel-core": "^6.26.0",
