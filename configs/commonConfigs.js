@@ -4,11 +4,22 @@ const root = path.resolve(__dirname, "..");
 module.exports = {
   entry: "./src/index.js",
   output: {
-    filename: "bundle.js",
+    filename: "[name].[chunkhash].js",
     path: path.resolve(root, "dist"),
     publicPath: "/dist/"
   },
-  mode: "development",
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          chunks: "initial",
+          name: "vendor",
+          enforce: true
+        }
+      }
+    }
+  },
   module: {
     rules: [
       {
@@ -21,7 +32,7 @@ module.exports = {
           "style-loader",
           {
             loader: "css-loader",
-            options: { modules: true, importLoaders: 1 }
+            options: { modules: true, importLoaders: 0 }
           },
           "postcss-loader"
         ]
