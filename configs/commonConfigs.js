@@ -1,6 +1,7 @@
 const path = require('path');
 const root = path.resolve(__dirname, '..');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const babelTransformJSX = require('@babel/plugin-transform-react-jsx');
 
 module.exports = {
   entry: './src/index.js',
@@ -9,7 +10,7 @@ module.exports = {
   },
   output: {
     filename: '[name].[chunkhash].js',
-    path: path.resolve(root, 'dist'),
+    path: path.resolve(root, 'dist')
   },
   optimization: {
     splitChunks: {
@@ -27,7 +28,16 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader'
+        exclude: /(node_modules)/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+              plugins: [babelTransformJSX]
+            }
+          }
+        ]
       },
       {
         test: /\.css$/,
@@ -37,12 +47,17 @@ module.exports = {
             loader: 'css-loader',
             options: { modules: true, importLoaders: 1 }
           },
-          'postcss-loader'
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: `${root}/config/`
+              }
+            }
+          }
         ]
       }
     ]
   },
-  plugins: [
-    new HtmlWebpackPlugin({title: 'IndexJS template', template: `${root}/index.html`})
-  ]
+  plugins: [new HtmlWebpackPlugin({ title: 'IndexJS template', template: `${root}/index.html` })]
 };
