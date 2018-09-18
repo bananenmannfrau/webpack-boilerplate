@@ -7,9 +7,21 @@ module.exports = {
     extensions: ['.js', '.json', '.jsx']
   },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].[chunkhash].js',
     path: path.resolve(root, 'dist'),
     publicPath: '/dist/'
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          chunks: 'initial',
+          name: 'vendor',
+          enforce: true
+        }
+      }
+    }
   },
   module: {
     rules: [
@@ -21,7 +33,10 @@ module.exports = {
         test: /\.css$/,
         use: [
           'style-loader',
-          { loader: 'css-loader', options: { modules: true, importLoaders: 1 } },
+          {
+            loader: 'css-loader',
+            options: { modules: true, importLoaders: 1 }
+          },
           'postcss-loader'
         ]
       }
