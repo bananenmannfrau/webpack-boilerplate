@@ -1,5 +1,6 @@
 const path = require('path');
 const root = path.resolve(__dirname, '..');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
@@ -9,7 +10,6 @@ module.exports = {
   output: {
     filename: '[name].[chunkhash].js',
     path: path.resolve(root, 'dist'),
-    publicPath: '/dist/'
   },
   optimization: {
     splitChunks: {
@@ -41,5 +41,8 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({title: 'IndexJS template', template: `${root}/index.html`})
+  ]
 };

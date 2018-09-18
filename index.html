@@ -1,12 +1,28 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-  <title>Webpack Boilerplate</title>
+  <meta charset="UTF-8">
+  <title>Webpack App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <% for (var css in htmlWebpackPlugin.files.css) { %>
+    <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+  <% }
+  %>
 </head>
 
 <body>
   <div id="root"></div>
-  <script src="./dist/bundle.js"></script>
+  <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+    <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+    <% }
+  %>
+
+  <% if (htmlWebpackPlugin.options.devServer) { %>
+        <script src="<%= htmlWebpackPlugin.options.devServer%>/webpack-dev-server.js"></script>
+  <% }
+  %>
 </body>
 
 </html>
