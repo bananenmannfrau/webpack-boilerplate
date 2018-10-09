@@ -1,7 +1,6 @@
 const path = require('path');
 const root = path.resolve(__dirname, '..');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const babelTransformJSX = require('@babel/plugin-transform-react-jsx');
 
 module.exports = {
   entry: './src/index.js',
@@ -34,7 +33,6 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
-              plugins: [babelTransformJSX]
             }
           }
         ]
